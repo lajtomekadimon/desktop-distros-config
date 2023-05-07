@@ -1,6 +1,8 @@
 # desktop-distros-config
 My personal configuration for some desktop distros.
 
+Fedora is my main distro at the moment, so other distro files may be outdated.
+
 After running every command, I should configure:
 
 - GNOME
