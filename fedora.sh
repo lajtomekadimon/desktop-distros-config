@@ -1,3 +1,5 @@
+# LAST FEDORA VERSION TESTED: 38
+# Desktop environment: GNOME
 
 ###############################################################################
 #                                   BASICS                                    #

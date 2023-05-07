@@ -6,7 +6,7 @@ After running every command, I should configure:
 - GNOME
 - GNOME Tweaks
 - GNOME Disks (auto-mount secondary hard drive)
-- Gedit
+- GNOME Text Editor
 - GNOME Terminal
 - Nautilus
 - Firefox (in `about:config`, put `extensions.pocket.enabled` and
