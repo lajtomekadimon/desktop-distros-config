@@ -58,6 +58,7 @@ sudo dnf install -y gimp inkscape audacity-freeworld kid3 blender
 sudo dnf install -y mpv
 sudo dnf install -y transmission-gtk
 sudo dnf install -y keepassxc
+sudo dnf install -y kdenlive kf5-kirigami2
 
 # Tutanota Desktop
 wget https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
