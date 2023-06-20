@@ -1,7 +1,8 @@
 # desktop-distros-config
-My personal configuration for some GNU/Linux desktop distros.
+My personal configuration for some GNU/Linux desktop distros. Please don't use
+it as it is, since it's designed for my personal case.
 
-Fedora is my main distro at the moment, so other distro files may be outdated.
+Debian is my main distro at the moment, so other distro files may be outdated.
 
 After running every command, I should configure:
 

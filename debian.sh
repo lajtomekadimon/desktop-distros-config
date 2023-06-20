@@ -1,4 +1,4 @@
-# LAST DEBIAN VERSION TESTED: 11
+# LAST DEBIAN VERSION TESTED: 12
 # Desktop environment: GNOME
 
 ###############################################################################
@@ -7,11 +7,11 @@
 
 su
 
-gedit /etc/apt/sources.list  # add to all: contrib non-free
+gnome-text-editor /etc/apt/sources.list  # add to all: contrib non-free
 # Add:
-# # buster-backports
-# deb http://httpredir.debian.org/debian bullseye-backports main contrib non-free
-# deb-src http://httpredir.debian.org/debian bullseye-backports main contrib non-free
+# # bookworm-backports
+# deb http://httpredir.debian.org/debian bookworm-backports main non-free-firmware contrib non-free
+# deb-src http://httpredir.debian.org/debian bookworm-backports main non-free-firmware contrib non-free
 
 apt update && apt upgrade
 
@@ -24,17 +24,37 @@ echo "lajto   ALL=(ALL) ALL" >> /etc/sudoers
 ###############################################################################
 
 sudo apt install -y wget nano git make pulseaudio libcanberra-pulse mpg123 \
-libldap-2.4-2 libpulse0 libxml2 giflib-tools libc6 gtk2-engines gcc \
-gcc-multilib g++ g++-multilib cmake lm-sensors hddtemp
+libpulse0 libxml2 giflib-tools libc6 gtk2-engines gcc ca-certificates gnupg2 \
+gcc-multilib g++ g++-multilib cmake lm-sensors apt-transport-https curl
+
+# 32 bits architecture
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y binutils-multiarch libstdc++6:i386 libgcc1:i386 \
+zlib1g:i386 libncurses5:i386 libcanberra-pulse:i386 \
+libpulse0:i386 libxml2:i386
+
+# NVIDIA drivers
+sudo apt install -y linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
+sudo apt update
+sudo apt install -y nvidia-driver nvidia-driver-libs:i386 \
+nvidia-vulkan-icd nvidia-vulkan-icd:i386 firmware-misc-nonfree
+
+# REBOOT
 
 # Compression tools
 sudo apt install -y rar unrar p7zip p7zip-full p7zip-rar unace zip unzip \
 bzip2 arj lhasa lzip xz-utils
 
 # Codecs
-sudo apt install -y ffmpeg2theora ffmpegthumbnailer \
-gstreamer1.0-plugins-base gstreamer1.0-nice gstreamer1.0-plugins-good \
-gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav \
+sudo apt install -y ffmpegthumbnailer \
+libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev \
+libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base \
+gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools \
+gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 \
+gstreamer1.0-qt5 gstreamer1.0-pulseaudio gstreamer1.0-nice \
 gstreamer1.0-vaapi
 
 # Fonts
@@ -56,36 +76,63 @@ gnome-taquin swell-foop gnome-robots quadrapassel gnome-nibbles \
 gnome-mines lightsoff hitori four-in-a-row five-or-more
 
 # Software
-sudo apt install -y gnome-tweak-tool rhythmbox rhythmbox-plugins \
+sudo apt install -y gnome-tweaks rhythmbox rhythmbox-plugins \
 simple-scan transmission-gtk gimp inkscape audacity kid3 gparted \
-soundconverter libreoffice mpv blender gnome-clocks gnome-builder \
+soundconverter libreoffice mpv kdenlive blender gnome-clocks \
 keepassxc screenfetch neofetch geogebra gnome-boxes vim
 
-# 32 bits architecture
-sudo dpkg --add-architecture i386
-sudo apt update
-sudo apt upgrade -y
-sudo apt install -y binutils-multiarch libstdc++6:i386 libgcc1:i386 \
-zlib1g:i386 libncurses5:i386 libcanberra-pulse:i386 libldap-2.4-2:i386 \
-libpulse0:i386 libxml2:i386
-
 # Custom GNOME shortcuts (vertical workspaces)
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up \
-"['<Super>Page_Up', '<Control><Alt>Up', '<Control><Alt>k']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down \
-"['<Super>Page_Down', '<Control><Alt>Down', '<Control><Alt>j']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left \
+"['<Super>Page_Up', '<Control><Alt>Left', '<Control><Alt>h']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right \
+"['<Super>Page_Down', '<Control><Alt>Right', '<Control><Alt>l']"
+
+# Google Chrome
+curl -fSsL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg >> /dev/null
+echo deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main | sudo tee /etc/apt/sources.list.d/google-chrome.list
+sudo apt update
+sudo apt install google-chrome-stable
+
+# Skype
+curl -sSL https://repo.skype.com/data/SKYPE-GPG-KEY | sudo gpg --dearmor -o /usr/share/keyrings/skype-keyring.gpg
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/skype-keyring.gpg] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list
+sudo apt update # If WARNING message: https://askubuntu.com/a/1409985
+sudo apt install skypeforlinux
+
+# Discord
+sudo apt install wget gconf-service gconf2-common libc++1 libc++1-14 libc++abi1-14 libgconf-2-4 libunwind-14
+wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
+sudo apt install ./discord.deb
+rm ./discord.deb
+
+# OBS Studio
+sudo apt install obs-studio
+
+# VS Code
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt update
+sudo apt install code
+rm ./microsoft.gpg
+
+# Docker
+sudo
+apt install apt-transport-https ca-certificates \
+curl gnupg-agent software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+sudo gpg --dearmor > /etc/apt/trusted.gpg.d/docker.gpg
+echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -sc) stable" \
+> /etc/apt/sources.list.d/docker-ce.list
+apt update
+apt install docker-ce docker-ce-cli docker-compose-plugin
+exit
+sudo usermod -aG docker lajto
+sudo systemctl start docker
+sudo systemctl enable docker
 
 # Autoremove
 sudo apt autoremove -y
-
-# NodeJS
-sudo apt install -y nodejs npm
-sudo npm cache clean -f
-sudo npm install -g n
-sudo n stable
-hash -r
-sudo npm update
-sudo npm install -g typescript
 
 # Telegram
 wget -O telegram.tar.xz https://telegram.org/dl/desktop/linux
@@ -95,6 +142,7 @@ mv Telegram ~/.telegram-desktop-dir
 ~/.telegram-desktop-dir/Telegram
 
 # Anki
+sudo apt install libxcb-cursor0
 wget -O anki.tar.zst https://github.com/ankitects/anki/releases/download/2.1.62/anki-2.1.62-linux-qt6.tar.zst
 tar --use-compress-program=unzstd -xvf anki.tar.zst
 rm anki.tar.zst
@@ -102,10 +150,11 @@ mv anki-* ~/.anki-hidden-dir
 cd ~/.anki-hidden-dir/ && sudo ./install.sh && cd ~
 # Uninstall: ./uninstall.sh
 
-# NVIDIA drivers
-sudo apt install -y linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
-sudo apt update
-sudo apt install -y nvidia-driver nvidia-driver-libs:i386 \
-nvidia-vulkan-icd nvidia-vulkan-icd:i386 firmware-misc-nonfree
+# Tutanota Desktop
+wget https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
+mkdir -p ~/.tutanota-dir/
+mv tutanota-desktop-linux.AppImage ~/.tutanota-dir/
+chmod a+x ~/.tutanota-dir/tutanota-desktop-linux.AppImage
+~/.tutanota-dir/tutanota-desktop-linux.AppImage # launchs Tutanota
 
 # REBOOT
