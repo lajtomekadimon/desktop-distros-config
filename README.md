@@ -1,5 +1,5 @@
 # desktop-distros-config
-My personal configuration for some desktop distros.
+My personal configuration for some GNU/Linux desktop distros.
 
 Fedora is my main distro at the moment, so other distro files may be outdated.
 
