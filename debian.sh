@@ -39,7 +39,9 @@ libpulse0:i386 libxml2:i386
 sudo apt install -y linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
 sudo apt update
 sudo apt install -y nvidia-driver nvidia-driver-libs:i386 \
-nvidia-vulkan-icd nvidia-vulkan-icd:i386 firmware-misc-nonfree
+nvidia-vulkan-icd nvidia-vulkan-icd:i386 firmware-misc-nonfree \
+mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 \
+libgl1-mesa-dri:i386
 
 # REBOOT
 
@@ -139,7 +141,7 @@ wget -O telegram.tar.xz https://telegram.org/dl/desktop/linux
 tar -xvf telegram.tar.xz
 rm telegram.tar.xz
 mv Telegram ~/.telegram-desktop-dir
-~/.telegram-desktop-dir/Telegram
+~/.telegram-desktop-dir/Telegram # launchs Telegram
 
 # Anki
 sudo apt install libxcb-cursor0
@@ -156,5 +158,20 @@ mkdir -p ~/.tutanota-dir/
 mv tutanota-desktop-linux.AppImage ~/.tutanota-dir/
 chmod a+x ~/.tutanota-dir/tutanota-desktop-linux.AppImage
 ~/.tutanota-dir/tutanota-desktop-linux.AppImage # launchs Tutanota
+
+# Flatpak
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Steam
+sudo apt install libgtk2.0-0:i386
+sudo apt install steam-installer
+# AFTER: Run "Install Steam app"
+
+# Wine
+sudo apt install wine wine32 wine64 libwine libwine:i386 fonts-wine
+sudo apt install winetricks
+winetricks corefonts fontfix vcrun2005sp1 vcrun2008 vcrun6
 
 # REBOOT
