@@ -42,6 +42,7 @@ sudo apt install -y nvidia-driver nvidia-driver-libs:i386 \
 nvidia-vulkan-icd nvidia-vulkan-icd:i386 firmware-misc-nonfree \
 mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 \
 libgl1-mesa-dri:i386
+sudo apt install -y nvidia-vaapi-driver # NOTE: Very important for OBS!
 
 # REBOOT
 
