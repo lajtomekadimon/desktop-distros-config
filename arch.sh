@@ -77,6 +77,15 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit
 # Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
 
+cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
+mkdir -f ~/.config/gtk-3.0
+cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+mkdir -f ~/.config/sway
+cp tiling-wm-config/.config/sway/config ~/.config/sway/config
+mkdir -f ~/.config/waybar
+cp tiling-wm-config/.config/waybar/config ~/.config/waybar/config
+cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
+
 nmcli device wifi list  # check name
 nmcli device wifi connect DEVICE_NAME password DEVICE_PASSWORD
 
@@ -114,19 +123,22 @@ sudo pacman -S discord
 
 sudo pacman -S chromium
 
+echo "--enable-features=WaylandWindowDecorations" > ~/.config/electron25-flags.conf
+echo "--ozone-platform-hint=auto" >> ~/.config/electron25-flags.conf
+
 # Tuta Desktop
 wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
-mkdir -p /home/$(USERNAME)/.tutanota-dir/
-mv tutanota-desktop-linux.AppImage /home/$(USERNAME)/.tutanota-dir/
-chmod a+x /home/$(USERNAME)/.tutanota-dir/tutanota-desktop-linux.AppImage
-/home/$(USERNAME)/.tutanota-dir/tutanota-desktop-linux.AppImage # launchs Tutanota
+mkdir -p ~/.tutanota-dir/
+mv tutanota-desktop-linux.AppImage ~/.tutanota-dir/
+chmod a+x ~/.tutanota-dir/tutanota-desktop-linux.AppImage
+~/.tutanota-dir/tutanota-desktop-linux.AppImage # launches Tutanota
 
 # Telegram Desktop
 wget -O telegram.tar.xz https://telegram.org/dl/desktop/linux
 tar -xvf telegram.tar.xz
 rm telegram.tar.xz
 mv Telegram ~/.telegram-desktop-dir
-~/.telegram-desktop-dir/Telegram # launchs Telegram
+~/.telegram-desktop-dir/Telegram # launches Telegram
 
 # TODO: Japanese and Chinese keyboard support
 # https://bbs.archlinux.org/viewtopic.php?id=268359
