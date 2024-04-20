@@ -23,7 +23,8 @@
         "sway/mode"
     ],
     "modules-center": [
-        "sway/window"
+        "clock#date",
+        "clock#time"
     ],
     "modules-right": [
         "network",
@@ -32,9 +33,7 @@
         "temperature",
         "custom/keyboard-layout",
         "battery",
-        "tray",
-        "clock#date",
-        "clock#time"
+        "tray"
     ],
 
 
@@ -64,14 +63,14 @@
 
     "clock#time": {
         "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "format": "{:%H:%M}",
         "tooltip": false
     },
 
     "clock#date": {
       "interval": 10,
-      "format": "  {:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+      "format": "  {:%b %e, %Y}", // Icon: calendar-alt
+      "tooltip-format": "{:%B %e, %Y}"
     },
 
     "cpu": {
@@ -113,11 +112,6 @@
     "sway/mode": {
         "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
-    },
-
-    "sway/window": {
-        "format": "{}",
-        "max-length": 120
     },
 
     "sway/workspaces": {
