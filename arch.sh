@@ -107,6 +107,8 @@ sudo pacman -S firefox transmission-gtk gimp inkscape mpv kid3-qt \
 libreoffice-still audacity xfburn gparted thunar eom atril engrampa pluma \
 keepassxc font-manager mate-calc
 
+sudo pacman -S qt5-wayland qt6-wayland
+
 sudo pacman -S gvfs gvfs-afc gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb
 
 sudo pacman -S ntfs-3g android-file-transfer mtpfs
