@@ -53,6 +53,9 @@ hide_edge_borders smart
 # Focus only when clicking
 focus_follows_mouse no
 
+# Terminal
+bindsym $mod+Return exec --no-startup-id $term
+
 # Kill focused window
 bindsym $mod+Shift+q kill
 
