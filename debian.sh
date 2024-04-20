@@ -153,8 +153,8 @@ mv anki-* ~/.anki-hidden-dir
 cd ~/.anki-hidden-dir/ && sudo ./install.sh && cd ~
 # Uninstall: ./uninstall.sh
 
-# Tutanota Desktop
-wget https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
+# Tuta Desktop
+wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
 mkdir -p ~/.tutanota-dir/
 mv tutanota-desktop-linux.AppImage ~/.tutanota-dir/
 chmod a+x ~/.tutanota-dir/tutanota-desktop-linux.AppImage

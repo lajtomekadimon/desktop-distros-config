@@ -60,8 +60,8 @@ sudo dnf install -y transmission-gtk
 sudo dnf install -y keepassxc
 sudo dnf install -y kdenlive kf5-kirigami2
 
-# Tutanota Desktop
-wget https://mail.tutanota.com/desktop/tutanota-desktop-linux.AppImage
+# Tuta Desktop
+wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
 mkdir -p /home/$(USERNAME)/.tutanota-dir/
 mv tutanota-desktop-linux.AppImage /home/$(USERNAME)/.tutanota-dir/
 chmod a+x /home/$(USERNAME)/.tutanota-dir/tutanota-desktop-linux.AppImage
