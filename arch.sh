@@ -67,7 +67,7 @@ sudo systemctl enable NetworkManager
 nmcli device wifi list  # check name
 nmcli device wifi connect DEVICE_NAME password DEVICE_PASSWORD
 
-sudo nano /etc/pacman.conf  # [multilib]
+sudo nano /etc/pacman.conf  # [multilib] and Color
 sudo pacman -Syu
 
 sudo pacman -S git
@@ -91,7 +91,11 @@ cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
 mkdir -p ~/.config/foot
 cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
-sudo pacman -S pipewire lib32-pipewire
+sudo pacman -S pipewire lib32-pipewire pipewire-pulse wireplumber pavucontrol
+
+mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
+cp tiling-wm-config/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf \
+~/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf
 
 sudo pacman -S screenfetch neofetch glances ranger feh mupdf cloc tokei
 
