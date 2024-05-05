@@ -66,6 +66,8 @@ cp tiling-wm-config/.config/sway/config ~/.config/sway/config
 mkdir -p ~/.config/waybar
 cp tiling-wm-config/.config/waybar/config ~/.config/waybar/config
 cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
+mkdir -p ~/.config/foot
+cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
 # TODO: DBeaver
 

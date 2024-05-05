@@ -64,6 +64,9 @@ reboot
 sudo systemctl start NetworkManager
 sudo systemctl enable NetworkManager
 
+nmcli device wifi list  # check name
+nmcli device wifi connect DEVICE_NAME password DEVICE_PASSWORD
+
 sudo nano /etc/pacman.conf  # [multilib]
 sudo pacman -Syu
 
@@ -78,16 +81,15 @@ sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit
 # Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
 
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
-mkdir -f ~/.config/gtk-3.0
+mkdir -p ~/.config/gtk-3.0
 cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
-mkdir -f ~/.config/sway
+mkdir -p ~/.config/sway
 cp tiling-wm-config/.config/sway/config ~/.config/sway/config
-mkdir -f ~/.config/waybar
+mkdir -p ~/.config/waybar
 cp tiling-wm-config/.config/waybar/config ~/.config/waybar/config
 cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
-
-nmcli device wifi list  # check name
-nmcli device wifi connect DEVICE_NAME password DEVICE_PASSWORD
+mkdir -p ~/.config/foot
+cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
 sudo pacman -S pipewire lib32-pipewire
 

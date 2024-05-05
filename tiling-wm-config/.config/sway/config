@@ -25,6 +25,9 @@ set $menu fuzzel
 # Background
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
+# Resolution
+output eDP-1 scale 1.25
+
 # Menu
 #########
 
