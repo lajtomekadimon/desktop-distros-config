@@ -56,7 +56,7 @@ mv Telegram ~/.telegram-desktop-dir
 
 ##################
 
-sudo apt install sway swaylock swayidle swaybg waybar foot fuzzel policykit-1 grim swappy wl-clipboard
+sudo apt install sway swaylock swayidle swaybg waybar foot fuzzel policykit-1 grim swappy wl-clipboard slurp
 
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.config/gtk-3.0
@@ -69,11 +69,19 @@ cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
 mkdir -p ~/.config/foot
 cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
-sudo apt install pavucontrol blueman
+sudo apt install libpipewire xdg-desktop-portal-wlr pavucontrol blueman
+
+# Screen-sharing
+#https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
+mkdir -p ~/.config/environment.d/
+cp tiling-wm-config/.config/environment.d/sway.conf ~/.config/environment.d/sway.conf
+
+make -p ~/Pictures/Screenshots/
 
 # TODO: DBeaver
 
 # TODO: Chrome
+# Enable `enable-webrtc-pipewire-capturer` in `chrome://flags`.
 
 sudo apt-get update
 sudo apt-get install ca-certificates curl

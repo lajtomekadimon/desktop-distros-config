@@ -35,6 +35,11 @@ bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
+input * {
+    xkb_layout "us(altgr-intl)"
+    xkb_options "grp:win_space_toggle"
+} 
+
 # Menu
 #########
 
@@ -127,10 +132,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Screenshots
-set $screenshot 1 selected, 2 whole, 3 selected clipboard, 4 whole clipboard, 5 swappy
+set $screenshot 1 selected, 2 whole, 3 selected-cb, 4 whole-cb, 5 swappy
 mode "$screenshot" {
-    bindsym 1 exec 'grim -g "$(slurp)" ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
-    bindsym 2 exec 'grim ~/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 1 exec 'grim -g "$(slurp)" ~/Pictures/Screenshots/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
+    bindsym 2 exec 'grim ~/Pictures/Screenshots/ps_$(date +"%Y%m%d%H%M%S").png', mode "default"
     bindsym 3 exec 'grim -g "$(slurp)" - | wl-copy', mode "default"
     bindsym 4 exec 'grim - | wl-copy', mode "default"
     bindsym 5 exec 'grim -g "$(slurp)" - | swappy -f -', mode "default"

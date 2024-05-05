@@ -32,6 +32,7 @@ nano /etc/locale.gen  # en_US.UTF-8 UTF-8
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=euro" >> /etc/vconsole.conf
+echo "FONT=eurlatgr" >> /etc/vconsole.conf
 
 echo "lajto-thinkpad" >> /etc/hostname
 nano /etc/hosts
@@ -77,7 +78,7 @@ sudo pacman -S linux-headers wget zip unzip unrar p7zip
 sudo pacman -S intel-ucode
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit grim swappy wl-clipboard
+sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit grim swappy wl-clipboard slurp
 # Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
 
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
@@ -93,7 +94,12 @@ cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
 sudo pacman -S pipewire lib32-pipewire pipewire-audio sof-firmware \
 alsa-firmware pipewire-pulse wireplumber alsa-card-profiles pavucontrol \
-gst-plugin-pipewire
+gst-plugin-pipewire libpipewire xdg-desktop-portal-wlr
+
+# Screen-sharing
+#https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
+mkdir -p ~/.config/environment.d/
+cp tiling-wm-config/.config/environment.d/sway.conf ~/.config/environment.d/sway.conf
 
 mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
 cp tiling-wm-config/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf \
@@ -114,6 +120,7 @@ wqy-microhei-lite cantarell-fonts otf-font-awesome ttf-font-awesome
 
 sudo pacman -S xdg-user-dirs-gtk
 xdg-user-dirs-update
+make -p ~/Pictures/Screenshots/
 
 sudo pacman -S firefox transmission-gtk gimp inkscape mpv kid3-qt \
 libreoffice-still audacity xfburn gparted thunar eom atril engrampa pluma \
@@ -134,6 +141,12 @@ sudo systemctl enable docker.service
 sudo systemctl start docker.service
 
 sudo pacman -S discord
+cp /usr/share/applications/discord.desktop ~/.local/share/applications/discord-wayland.desktop
+vim ~/.local/share/applications/discord-wayland.desktop
+# Discord Wayland
+# discord --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+vim ~/.config/discord/settings.json
+# Add: "SKIP_HOST_UPDATE": true
 
 sudo pacman -S chromium
 
@@ -156,11 +169,7 @@ mv Telegram ~/.telegram-desktop-dir
 
 # TODO: Japanese and Chinese keyboard support
 # https://bbs.archlinux.org/viewtopic.php?id=268359
-pkg install textproc/ibus japanese/ibus-mozc chinese/ibus-libpinyin
-
-# TODO: Screenshots
-
-# TODO: Write Spanish and other special characters
+#pkg install textproc/ibus japanese/ibus-mozc chinese/ibus-libpinyin
 
 # TODO: General improvements
 # https://wiki.archlinux.org/title/System_time
