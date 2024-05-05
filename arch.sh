@@ -91,7 +91,9 @@ cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
 mkdir -p ~/.config/foot
 cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
-sudo pacman -S pipewire lib32-pipewire pipewire-pulse wireplumber pavucontrol
+sudo pacman -S pipewire lib32-pipewire pipewire-audio sof-firmware \
+alsa-firmware pipewire-pulse wireplumber alsa-card-profiles pavucontrol \
+gst-plugin-pipewire
 
 mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
 cp tiling-wm-config/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf \
