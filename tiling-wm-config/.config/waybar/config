@@ -69,8 +69,8 @@
 
     "clock#date": {
       "interval": 10,
-      "format": " {:%b%e, %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%B %e, %Y}"
+      "format": " {:%A %b%e}", // Icon: calendar-alt
+      "tooltip-format": "{:%A %B%e, %Y}"
     },
 
     "cpu": {

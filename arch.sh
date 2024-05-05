@@ -33,11 +33,11 @@ locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "KEYMAP=euro" >> /etc/vconsole.conf
 
-echo "lajto-arch" >> /etc/hostname
+echo "lajto-thinkpad" >> /etc/hostname
 nano /etc/hosts
 # 127.0.0.1   localhost
 # ::1         localhost
-# 127.0.1.1   lajto-arch.localdomain lajto-arch
+# 127.0.1.1   lajto-thinkpad.localdomain lajto-thinkpad
 
 passwd
 
@@ -77,7 +77,7 @@ sudo pacman -S linux-headers wget zip unzip unrar p7zip
 sudo pacman -S intel-ucode
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit
+sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit grim swappy wl-clipboard
 # Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
 
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
@@ -98,6 +98,10 @@ gst-plugin-pipewire
 mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
 cp tiling-wm-config/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf \
 ~/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf
+
+sudo pacman -S bluez bluez-utils blueman
+sudo systemctl enable blueetooth.service
+sudo systemctl start blueetooth.service
 
 sudo pacman -S screenfetch neofetch glances ranger feh mupdf cloc tokei
 
@@ -155,10 +159,6 @@ mv Telegram ~/.telegram-desktop-dir
 pkg install textproc/ibus japanese/ibus-mozc chinese/ibus-libpinyin
 
 # TODO: Screenshots
-
-# TODO: Volume and other sound managements
-
-# TODO: Screen resolution
 
 # TODO: Write Spanish and other special characters
 
