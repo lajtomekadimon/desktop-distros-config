@@ -124,7 +124,7 @@ make -p ~/Pictures/Screenshots/
 
 sudo pacman -S firefox transmission-gtk gimp inkscape mpv kid3-qt \
 libreoffice-still audacity xfburn gparted thunar eom atril engrampa pluma \
-keepassxc font-manager mate-calc
+keepassxc font-manager mate-calc meld
 
 sudo pacman -S qt5-wayland qt6-wayland
 

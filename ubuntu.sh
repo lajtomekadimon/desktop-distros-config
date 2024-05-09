@@ -29,7 +29,7 @@ sudo apt install ibus-anthy ibus-libpinyin libpinyin-utils
 # Install software
 sudo apt install p7zip unrar mpv rhythmbox gimp inkscape brasero \
 screenfetch neofetch kid3 keepassxc virtualbox \
-soundconverter gparted audacity geogebra thunderbird
+soundconverter gparted audacity geogebra thunderbird meld
 
 # NodeJS
 sudo apt install nodejs npm
