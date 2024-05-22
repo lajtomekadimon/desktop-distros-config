@@ -59,8 +59,9 @@ mv Telegram ~/.telegram-desktop-dir
 sudo apt install sway swaylock swayidle swaybg waybar foot fuzzel policykit-1 grim wl-clipboard slurp
 # TODO: swappy
 sudo apt install adwaita-icon-theme
-sudo apt install pluma kronometer
+sudo apt install pluma kronometer caja caja-open-terminal
 
+cp tiling-wm-config/.mekadimo_date.py ~/.mekadimo_date.py
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.config/gtk-3.0
 cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini

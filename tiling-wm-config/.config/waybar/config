@@ -16,18 +16,21 @@
     "position": "top",
 
     // If height property would be not present, it'd be calculated dynamically
-    "height": 30,
+    "height": 22,
 
     "modules-left": [
         "sway/workspaces",
         "sway/mode"
     ],
     "modules-center": [
+        "clock#time",
+        "custom/date",
         "clock#date",
-        "clock#time"
+        "clock#time-spain"
     ],
     "modules-right": [
         "custom/keyboard-layout",
+        "pulseaudio",
         "memory",
         "cpu",
         "temperature",
@@ -61,16 +64,34 @@
         "tooltip": true
     },
 
+    "custom/date": {
+      "exec": "python3 ~/.mekadimo_date.py",
+      // Interval set only as a fallback, as the value is updated by signal
+      "interval": 30,
+      "format": " {}", // Icon: calendar
+      // TODO: Configure cron that sends signal when day changes
+      // "signal": 10, // SIGUSR1
+      "tooltip": false
+    },
+
     "clock#time": {
         "interval": 1,
         "format": "{:%H:%M}",
         "tooltip": false
     },
 
+    "clock#time-spain": {
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "timezone": "Europe/Madrid",
+        "tooltip": false
+    },
+
     "clock#date": {
-      "interval": 10,
-      "format": " {:%A %b%e}", // Icon: calendar-alt
-      "tooltip-format": "{:%A %B%e, %Y}"
+        "interval": 10,
+        "format": " {:%A, %b %e, %Y}", // Icon: calendar-alt
+        "timezone": "Europe/Madrid",
+        "tooltip-format": "{:%A, %B %e, %Y}"
     },
 
     "cpu": {
@@ -127,11 +148,11 @@
 
     "pulseaudio": {
        //"scroll-step": 1,
-       "format": "{icon}  {volume}%",
+       "format": "{icon} {volume}%",
        "format-source": "Mic ON",
        "format-source-muted": "Mic OFF",
-       "format-bluetooth": "{icon}  {volume}%",
-       "format-muted": "",
+       "format-bluetooth": "{icon} {volume}%",
+       "format-muted": " OFF",
        "format-icons": {
            "headphones": "",
            "handsfree": "",

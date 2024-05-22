@@ -81,6 +81,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit grim swappy wl-clipboard slurp
 # Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
 
+cp tiling-wm-config/.mekadimo_date.py ~/.mekadimo_date.py
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.config/gtk-3.0
 cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
@@ -111,6 +112,20 @@ sudo systemctl start blueetooth.service
 
 sudo pacman -S screenfetch neofetch glances ranger feh mupdf cloc tokei
 
+sudo pacman -S neovim git make python python-pip npm nodejs cargo ripgrep lazygit python-pynvim
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+echo "export PATH=~/.npm-global/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc 
+rustup default stable
+LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+echo "export PATH=~/.local/bin:\$PATH" >> ~/.bashrc
+source ~/.bashrc 
+mkdir -p ~/.config/lvim
+cp tiling-wm-config/.config/lvim/config.lua ~/.config/lvim/config.lua
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf && cd ~
+
 sudo pacman -S noto-fonts noto-fonts-cjk \
 adobe-source-code-pro-fonts adobe-source-sans-pro-fonts \
 adobe-source-serif-pro-fonts ttf-dejavu \
@@ -123,8 +138,8 @@ xdg-user-dirs-update
 make -p ~/Pictures/Screenshots/
 
 sudo pacman -S firefox transmission-gtk gimp inkscape mpv kid3-qt \
-libreoffice-still audacity xfburn gparted thunar eom atril engrampa pluma \
-keepassxc font-manager mate-calc meld
+libreoffice-still audacity xfburn gparted caja caja-open-terminal eom atril \
+engrampa pluma keepassxc font-manager mate-calc meld
 
 sudo pacman -S qt5-wayland qt6-wayland
 

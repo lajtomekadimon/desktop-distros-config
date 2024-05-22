@@ -48,16 +48,17 @@
 
 /* The whole bar */
 #waybar {
-    background: #323232;
+    background: #222;
     color: white;
-    font-family: "Source Code Pro", monospace;
-    font-size: 13px;
+    font-family: "Noto Sans Mono", monospace;
+    font-size: 12px;
 }
 
 /* Each module */
 #battery,
 #clock,
 #cpu,
+#custom-date,
 #custom-keyboard-layout,
 #memory,
 #mode,
@@ -65,8 +66,8 @@
 #pulseaudio,
 #temperature,
 #tray {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 
@@ -96,14 +97,6 @@
 #battery.critical.discharging {
     animation-name: blink-critical;
     animation-duration: 2s;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#cpu {
-  /* No styles */
 }
 
 #cpu.warning {
@@ -137,36 +130,16 @@
     padding-bottom: 2px;
 }
 
-#network {
-    /* No styles */
-}
-
 #network.disconnected {
     color: orange;
-}
-
-#pulseaudio {
-    /* No styles */
-}
-
-#pulseaudio.muted {
-    /* No styles */
 }
 
 #custom-spotify {
     color: rgb(102, 220, 105);
 }
 
-#temperature {
-    /* No styles */
-}
-
 #temperature.critical {
     color: red;
-}
-
-#tray {
-    /* No styles */
 }
 
 #window {
@@ -177,8 +150,8 @@
     border-top: 2px solid transparent;
     /* To compensate for the top border and still have vertical centering */
     padding-bottom: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
     color: #888888;
 }
 
