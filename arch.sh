@@ -82,6 +82,7 @@ sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit grim swap
 # Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
 
 cp tiling-wm-config/.mekadimo_date.py ~/.mekadimo_date.py
+cp tiling-wm-config/.mekadimo_date.awk ~/.mekadimo_date.awk
 cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.config/gtk-3.0
 cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini

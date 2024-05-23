@@ -1,7 +1,9 @@
 
 update-sway:
 	rm -f ~/.mekadimo_date.py
+	rm -f ~/.mekadimo_date.awk
 	cp tiling-wm-config/.mekadimo_date.py ~/.mekadimo_date.py
+	cp tiling-wm-config/.mekadimo_date.awk ~/.mekadimo_date.awk
 	rm -f ~/.gtkrc-2.0
 	cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
 	mkdir -p ~/.config/gtk-3.0

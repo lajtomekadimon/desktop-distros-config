@@ -1,6 +1,6 @@
 #!/usr/bin/awk -f
 
-# Usage: echo $(date -u +"%Y-%m-%d") | ./.mekadimo_date.awk
+# Usage: printf %s $(date -u +'%Y-%m-%d') | awk -f ./.mekadimo_date.awk
 
 BEGIN {
 	month_names[1] = "Printuno"
