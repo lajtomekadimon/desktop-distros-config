@@ -774,9 +774,9 @@ def print_mekadimo_date(date: datetime) -> None:
         mekadimo_month, mekadimo_day = MEKADIMO_MONTH_DAY_MAP_NORMAL[(gregorian_month, gregorian_day)]
 
     if mekadimo_day == 91 and mekadimo_month == 4:
-        print(f"End of year, {mekadimo_year}")
+        print(f"Mekadimo Day, {mekadimo_year}")
     elif mekadimo_day == 91 and mekadimo_month == 2:
-        print(f"Datakoro day, {mekadimo_year}")
+        print(f"Datakoro Day, {mekadimo_year}")
     else:
         mekadimo_month_name = MEKADIMO_MONTH_NAMES[mekadimo_month]
         print(f"{mekadimo_month_name} {mekadimo_day}, {mekadimo_year}")
