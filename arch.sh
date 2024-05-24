@@ -171,10 +171,13 @@ echo "--ozone-platform-hint=auto" >> ~/.config/electron25-flags.conf
 
 # Tuta Desktop
 wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
-mkdir -p ~/.tutanota-dir/
-mv tutanota-desktop-linux.AppImage ~/.tutanota-dir/
-chmod a+x ~/.tutanota-dir/tutanota-desktop-linux.AppImage
-~/.tutanota-dir/tutanota-desktop-linux.AppImage # launches Tutanota
+mkdir -p ~/.tuta-dir/
+mv tutanota-desktop-linux.AppImage ~/.tuta-dir/
+chmod a+x ~/.tuta-dir/tutanota-desktop-linux.AppImage
+# ~/.tuta-dir/tutanota-desktop-linux.AppImage  # launches Tuta Desktop
+sudo pacman -S gnome-keyring  # apparently, it's needed
+~/.tuta-dir/tutanota-desktop-linux.AppImage --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto  # launches Tuta Desktop
+# TODO: Make Tuta Desktop work in Sway
 
 # Telegram Desktop
 wget -O telegram.tar.xz https://telegram.org/dl/desktop/linux
