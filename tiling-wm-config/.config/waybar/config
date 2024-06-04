@@ -44,24 +44,28 @@
     // Modules
     // -------------------------------------------------------------------------
 
-    "battery": {
-        "interval": 10,
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        // Connected to AC
-        "format": " {icon} {capacity}%", // Icon: bolt
-        // Not connected to AC
-        "format-discharging": "{icon} {capacity}%",
-        "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
-        ],
-        "tooltip": true
+    "sway/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": false,
+        "format": "{icon} {name}",
+        "format-icons": {
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
+        "tooltip": false
+    },
+
+    //-------------------------------
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "tooltip": false
     },
 
     "custom/date": {
@@ -74,10 +78,11 @@
       "tooltip": false
     },
 
-    "clock#time": {
-        "interval": 1,
-        "format": "{:%H:%M}",
-        "tooltip": false
+    "clock#date": {
+        "interval": 10,
+        "format": " {:%A, %b %e, %Y}", // Icon: calendar-alt
+        "timezone": "Europe/Madrid",
+        "tooltip-format": "{:%A, %B %e, %Y}"
     },
 
     "clock#time-spain": {
@@ -87,21 +92,7 @@
         "tooltip": false
     },
 
-    "clock#date": {
-        "interval": 10,
-        "format": " {:%A, %b %e, %Y}", // Icon: calendar-alt
-        "timezone": "Europe/Madrid",
-        "tooltip-format": "{:%A, %B %e, %Y}"
-    },
-
-    "cpu": {
-        "interval": 5,
-        "format": " {usage}%", // Icon: microchip
-        "states": {
-          "warning": 70,
-          "critical": 90
-        }
-    },
+    //-------------------------------
 
     "custom/keyboard-layout": {
       "exec": "swaymsg -t get_inputs | grep -m1 'xkb_active_layout_name' | awk '{gsub(\"\\\"\", \"\", $2); print $2}'",
@@ -111,39 +102,6 @@
       // Signal sent by Sway key binding (~/.config/sway/key-bindings)
       "signal": 1, // SIGHUP
       "tooltip": false
-    },
-
-    "memory": {
-        "interval": 5,
-        "format": " {}%", // Icon: memory
-        "states": {
-            "warning": 70,
-            "critical": 90
-        }
-    },
-
-    "network": {
-        "interval": 5,
-        "format-wifi": " {signalStrength}%", // Icon: wifi
-        "format-ethernet": " 100%", // Icon: ethernet
-        "format-disconnected": "⚠ (disconnected)",
-        "tooltip-format": "{ifname}: {ipaddr}"
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">  {}</span>", // Icon: expand-arrows-alt
-        "tooltip": false
-    },
-
-    "sway/workspaces": {
-        "all-outputs": false,
-        "disable-scroll": false,
-        "format": "{icon} {name}",
-        "format-icons": {
-            "urgent": "",
-            "focused": "",
-            "default": ""
-        }
     },
 
     "pulseaudio": {
@@ -165,6 +123,24 @@
        "on-click": "pavucontrol"
     },
 
+    "memory": {
+        "interval": 5,
+        "format": " {}%", // Icon: memory
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": " {usage}%", // Icon: microchip
+        "states": {
+          "warning": 70,
+          "critical": 90
+        }
+    },
+
     "temperature": {
       "critical-threshold": 80,
       "interval": 5,
@@ -177,6 +153,34 @@
           ""  // Icon: temperature-full
       ],
       "tooltip": true
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": " {signalStrength}%", // Icon: wifi
+        "format-ethernet": " 100%", // Icon: ethernet
+        "format-disconnected": "⚠ (disconnected)",
+        "tooltip-format": "{ifname}: {ipaddr}"
+    },
+
+    "battery": {
+        "interval": 10,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        // Connected to AC
+        "format": " {icon} {capacity}%", // Icon: bolt
+        // Not connected to AC
+        "format-discharging": "{icon} {capacity}%",
+        "format-icons": [
+            "", // Icon: battery-full
+            "", // Icon: battery-three-quarters
+            "", // Icon: battery-half
+            "", // Icon: battery-quarter
+            ""  // Icon: battery-empty
+        ],
+        "tooltip": true
     },
 
     "tray": {
