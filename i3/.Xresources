@@ -1,0 +1,61 @@
+
+! Cursor
+Xcursor.theme: Adwaita
+Xcursor.size:  24
+
+! urxvt terminal
+URxvt*termName:       rxvt-256color
+URxvt*font:           xft:Source Code Pro:pixelsize=14
+URxvt.depth:          0
+URxvt*lineSpace:      1
+URxvt.iso14755:       false
+URxvt.iso14755_52:    false
+URxvt.scrollBar:      false
+URxvt.internalBorder: 18
+
+
+
+!!!!!!!!!
+! Colors
+!!!!!!!!!
+
+URxvt*foreground:  #444444
+URxvt*background:  #eeeeee
+URxvt*cursorColor: #444444
+
+! Black + DarkGrey
+URxvt*color0: #eeeeee
+URxvt*color8: #bcbcbc
+
+! DarkRed + Red
+URxvt*color1: #af0000
+URxvt*color9: #d70000
+
+! DarkGreen + Green
+URxvt*color2:  #008700
+URxvt*color10: #d70087
+
+! DarkYellow + Yellow
+URxvt*color3:  #5f8700
+URxvt*color11: #8700af
+
+! DarkBlue + Blue
+URxvt*color4:  #0087af
+URxvt*color12: #d75f00
+
+! DarkMagenta + Magenta
+URxvt*color5:  #878787
+URxvt*color13: #d75f00
+
+! DarkCyan + Cyan
+URxvt*color6:  #005f87
+URxvt*color14: #005faf
+
+! LightGrey + White
+URxvt*color7:  #444444
+URxvt*color15: #005f87
+
+! Bold, Italic, Underline
+!*.colorBD:
+!*.colorIT:
+!*.colorUL:
