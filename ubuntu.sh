@@ -56,18 +56,22 @@ mv Telegram ~/.telegram-desktop-dir
 
 ##################
 
-sudo apt install sway swaylock swayidle swaybg waybar foot fuzzel policykit-1 grim wl-clipboard slurp
-# TODO: swappy
-sudo apt install adwaita-icon-theme
-sudo apt install pluma kronometer caja caja-open-terminal
-
 cp shared/.mekadimo_date.py ~/.mekadimo_date.py
 cp shared/.mekadimo_date.awk ~/.mekadimo_date.awk
+sudo apt install adwaita-icon-theme
+sudo apt install pluma kronometer caja caja-open-terminal
 cp shared/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.config/gtk-3.0
 cp shared/gtk/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 mkdir -p ~/.config/gtk-4.0
 cp shared/gtk/gtk-4.0/settings.ini ~/.config/gtk-4.0/settings.ini
+
+# SWAY
+########################
+
+sudo apt install sway swaylock swayidle swaybg waybar foot fuzzel policykit-1 grim wl-clipboard slurp
+# TODO: swappy
+
 mkdir -p ~/.config/sway
 cp sway/config ~/.config/sway/config
 mkdir -p ~/.config/waybar
@@ -83,6 +87,30 @@ sudo apt install xdg-desktop-portal-wlr pavucontrol blueman
 #https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
 mkdir -p ~/.config/environment.d/
 cp sway/environment.d/sway.conf ~/.config/environment.d/sway.conf
+
+# i3
+########################
+
+sudo apt install i3-wm i3status i3lock polybar rofi picom rxvt-unicode scrot feh
+
+sudo apt install pavucontrol blueman
+
+rm -f ~/.Xresources
+cp i3/.Xresources ~/.Xresources
+mkdir -p ~/.config/i3
+rm -f ~/.config/i3/config
+cp i3/config ~/.config/i3/config
+mkdir -p ~/.config/polybar
+rm -f ~/.config/polybar/config.ini
+cp i3/polybar/config.ini ~/.config/polybar/config.ini
+rm -f ~/.config/polybar/launch.sh
+cp i3/polybar/launch.sh ~/.config/polybar/launch.sh
+chmod +x ~/.config/polybar/launch.sh
+
+sudo apt install ibus ibus-mozc ibus-libpinyin
+ibus-setup
+
+##################
 
 make -p ~/Pictures/Screenshots/
 

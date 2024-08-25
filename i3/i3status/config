@@ -19,6 +19,7 @@ order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "volume master"
 order += "tztime local"
+order += "mekadimo_datetime"
 
 # Sections
 #############
@@ -40,8 +41,8 @@ cpu_temperature 0 {
 }
 
 volume master {
-    format = " V: %volume "
-    format_muted = " V: muted (%volume) "
+    format = "%volume "
+    format_muted = "%volume "
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -49,4 +50,10 @@ volume master {
 
 tztime local {
     format = " %A, %Y-%m-%d %H:%M "
+}
+
+mekadimo_datetime {
+    format = "%output"
+    command = "echo hola"
+    #command = "printf %s $(date -u +'%Y-%m-%d') | awk -f ~/.mekadimo_date.awk"
 }
