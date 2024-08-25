@@ -61,18 +61,20 @@ sudo apt install sway swaylock swayidle swaybg waybar foot fuzzel policykit-1 gr
 sudo apt install adwaita-icon-theme
 sudo apt install pluma kronometer caja caja-open-terminal
 
-cp tiling-wm-config/.mekadimo_date.py ~/.mekadimo_date.py
-cp tiling-wm-config/.mekadimo_date.awk ~/.mekadimo_date.awk
-cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
+cp shared/.mekadimo_date.py ~/.mekadimo_date.py
+cp shared/.mekadimo_date.awk ~/.mekadimo_date.awk
+cp shared/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.config/gtk-3.0
-cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+cp shared/gtk/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+mkdir -p ~/.config/gtk-4.0
+cp shared/gtk/gtk-4.0/settings.ini ~/.config/gtk-4.0/settings.ini
 mkdir -p ~/.config/sway
-cp tiling-wm-config/.config/sway/config ~/.config/sway/config
+cp sway/config ~/.config/sway/config
 mkdir -p ~/.config/waybar
-cp tiling-wm-config/.config/waybar/config ~/.config/waybar/config
-cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
+cp sway/waybar/config ~/.config/waybar/config
+cp sway/waybar/style.css ~/.config/waybar/style.css
 mkdir -p ~/.config/foot
-cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
+cp sway/foot/foot.ini ~/.config/foot/foot.ini
 
 sudo apt install xdg-desktop-portal-wlr pavucontrol blueman
 # TODO?: libpipewire
@@ -80,7 +82,7 @@ sudo apt install xdg-desktop-portal-wlr pavucontrol blueman
 # Screen-sharing
 #https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
 mkdir -p ~/.config/environment.d/
-cp tiling-wm-config/.config/environment.d/sway.conf ~/.config/environment.d/sway.conf
+cp sway/environment.d/sway.conf ~/.config/environment.d/sway.conf
 
 make -p ~/Pictures/Screenshots/
 

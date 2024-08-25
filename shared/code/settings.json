@@ -1,0 +1,43 @@
+{
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "diffEditor.wordWrap": "off",
+    "files.exclude": {
+        "**/__pycache__": true
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "rust-analyzer.inlayHints.parameterHints.enable": false,
+    "rust-analyzer.inlayHints.typeHints.enable": false,
+    "rust-analyzer.inlayHints.closingBraceHints.enable": false,
+    "rust-analyzer.inlayHints.chainingHints.enable": false,
+    "rust-analyzer.inlayHints.renderColons": false,
+    "rust-analyzer.hover.actions.run.enable": false,
+    "rust-analyzer.lens.run.enable": false,
+    "rust-analyzer.hover.actions.debug.enable": false,
+    "rust-analyzer.lens.debug.enable": false,
+    "rust-analyzer.lens.implementations.enable": false,
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "1",
+    "files.associations": {
+        "*.sql": "postgres"
+    },
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "Default Light+",
+    "workbench.tree.indent": 15,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "redhat.telemetry.enabled": false,
+    "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.terminalAuthentication": true,
+    "git.openRepositoryInParentFolders": "always",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "editor.fontFamily": "'Noto Sans Mono', 'Droid Sans Mono', 'monospace', monospace",
+    "deepl.formality": "default",
+    "deepl.tagHandling": "off",
+    "deepl.splitSentences": "1",
+    "deepl.translationMode": "Replace"
+}

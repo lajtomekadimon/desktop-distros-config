@@ -71,6 +71,9 @@ nmcli device wifi connect DEVICE_NAME password DEVICE_PASSWORD
 sudo nano /etc/pacman.conf  # [multilib] and Color
 sudo pacman -Syu
 
+sudo systemctl enable systemd-timesyncd.service
+sudo systemctl start systemd-timesyncd.service
+
 sudo pacman -S git
 
 sudo pacman -S linux-headers wget zip unzip unrar p7zip
@@ -79,32 +82,33 @@ sudo pacman -S intel-ucode
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 sudo pacman -S sway swaylock swayidle swaybg waybar foot fuzzel polkit grim swappy wl-clipboard slurp
-# Before starting sway it is advisable to either install them or set a new launcher and terminal in the configuration
-
-cp tiling-wm-config/.mekadimo_date.py ~/.mekadimo_date.py
-cp tiling-wm-config/.mekadimo_date.awk ~/.mekadimo_date.awk
-cp tiling-wm-config/.gtkrc-2.0 ~/.gtkrc-2.0
-mkdir -p ~/.config/gtk-3.0
-cp tiling-wm-config/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
-mkdir -p ~/.config/sway
-cp tiling-wm-config/.config/sway/config ~/.config/sway/config
-mkdir -p ~/.config/waybar
-cp tiling-wm-config/.config/waybar/config ~/.config/waybar/config
-cp tiling-wm-config/.config/waybar/style.css ~/.config/waybar/style.css
-mkdir -p ~/.config/foot
-cp tiling-wm-config/.config/foot/foot.ini ~/.config/foot/foot.ini
 
 sudo pacman -S pipewire lib32-pipewire pipewire-audio sof-firmware \
 alsa-firmware pipewire-pulse wireplumber alsa-card-profiles pavucontrol \
 gst-plugin-pipewire libpipewire xdg-desktop-portal-wlr
 
+cp shared/.mekadimo_date.py ~/.mekadimo_date.py
+cp shared/.mekadimo_date.awk ~/.mekadimo_date.awk
+cp shared/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
+mkdir -p ~/.config/gtk-3.0
+cp shared/gtk/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+mkdir -p ~/.config/gtk-4.0
+cp shared/gtk/gtk-4.0/settings.ini ~/.config/gtk-4.0/settings.ini
+mkdir -p ~/.config/sway
+cp sway/config ~/.config/sway/config
+mkdir -p ~/.config/waybar
+cp sway/waybar/config ~/.config/waybar/config
+cp sway/waybar/style.css ~/.config/waybar/style.css
+mkdir -p ~/.config/foot
+cp sway/foot/foot.ini ~/.config/foot/foot.ini
+
 # Screen-sharing
 #https://www.reddit.com/r/swaywm/comments/l4e55v/guide_how_to_screenshare_from_chromiumfirefox/
 mkdir -p ~/.config/environment.d/
-cp tiling-wm-config/.config/environment.d/sway.conf ~/.config/environment.d/sway.conf
+cp sway/environment.d/sway.conf ~/.config/environment.d/sway.conf
 
 mkdir -p ~/.config/pipewire/pipewire-pulse.conf.d/
-cp tiling-wm-config/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf \
+cp shared/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf \
 ~/.config/pipewire/pipewire-pulse.conf.d/switch-on-connect.conf
 
 sudo pacman -S bluez bluez-utils blueman
@@ -123,7 +127,7 @@ LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.
 echo "export PATH=~/.local/bin:\$PATH" >> ~/.bashrc
 source ~/.bashrc 
 mkdir -p ~/.config/lvim
-cp tiling-wm-config/.config/lvim/config.lua ~/.config/lvim/config.lua
+cp shared/lvim/config.lua ~/.config/lvim/config.lua
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf && cd ~
 
@@ -151,6 +155,10 @@ sudo pacman -S ntfs-3g android-file-transfer mtpfs
 sudo pacman -S code
 echo "--enable-features=WaylandWindowDecorations" > ~/.config/code-flags.conf
 echo "--ozone-platform-hint=auto" >> ~/.config/code-flags.conf
+mkdir -p "~/.config/Code - OSS/"
+mkdir -p "~/.config/Code - OSS/User/"
+rm -f "~/.config/Code - OSS/User/settings.json"
+cp shared/code/settings.json "~/.config/Code - OSS/User/settings.json"
 
 sudo pacman -S docker docker-compose
 sudo systemctl enable docker.service
@@ -169,6 +177,12 @@ sudo pacman -S chromium
 echo "--enable-features=WaylandWindowDecorations" > ~/.config/electron25-flags.conf
 echo "--ozone-platform-hint=auto" >> ~/.config/electron25-flags.conf
 
+sudo pacman -S ibus ibus-anthy ibus-libpinyin
+echo "GTK_IM_MODULE=ibus" >> /etc/environment
+echo "QT_IM_MODULE=ibus" >> /etc/environment
+echo "XMODIFIERS=@im=ibus" >> /etc/environment
+ibus-setup
+
 # Tuta Desktop
 wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage
 mkdir -p ~/.tuta-dir/
@@ -186,9 +200,6 @@ rm telegram.tar.xz
 mv Telegram ~/.telegram-desktop-dir
 ~/.telegram-desktop-dir/Telegram # launches Telegram
 
-# TODO: Japanese and Chinese keyboard support
-# https://bbs.archlinux.org/viewtopic.php?id=268359
-#pkg install textproc/ibus japanese/ibus-mozc chinese/ibus-libpinyin
 
 # TODO: General improvements
 # https://wiki.archlinux.org/title/System_time

@@ -35,10 +35,17 @@ bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
+# input "type:keyboard" {
 input * {
     xkb_layout "us(altgr-intl)"
-    xkb_options "grp:win_space_toggle"
-} 
+    # TODO: Japanese and Chinese keyboards (using ibus, but lacks Wayland support)
+}
+# bindsym $mod+space input type:keyboard xkb_switch_layout next
+# bindsym $mod+space exec --no-startup-id "setxkbmap -layout us(altgr-intl),es -option 'grp:alt_shift_toggle'"
+
+exec systemctl --user set-environment GTK_IM_MODULE=ibus
+exec systemctl --user set-environment QT_IM_MODULE=ibus
+exec systemctl --user set-environment XMODIFIERS=@im=ibus
 
 # Menu
 #########
@@ -115,13 +122,13 @@ bindsym $mod+e layout toggle split
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# Change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# Change focus between tiling / floating windows ($mod+space already in use)
+# bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
 bindsym $mod+a focus parent
 
-# Focus the child container
+# Focus the child container ($mod+d already in use)
 #bindsym $mod+d focus child
 
 # Move the currently focused window to the scratchpad
@@ -247,4 +254,21 @@ bar {
      swaybar_command waybar
 }
 
-include /etc/sway/config.d/*
+###############################################################################
+# Note: instead of including /etc/sway/config.d/*, I manually put what's there
+
+# include /etc/sway/config.d/*
+
+exec systemctl --user set-environment XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment DISPLAY \
+                                         SWAYSOCK \
+                                         WAYLAND_DISPLAY \
+                                         XDG_CURRENT_DESKTOP
+
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY \
+                                                  SWAYSOCK \
+                                                  XDG_CURRENT_DESKTOP=sway \
+                                                  WAYLAND_DISPLAY
+
+exec ibus-daemon -rxRd &
