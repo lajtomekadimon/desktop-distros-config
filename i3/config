@@ -121,10 +121,10 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Screenshot (whole screen)
-bindsym Print exec --no-startup-id "sleep 0.2; scrot ~/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
+bindsym Print exec --no-startup-id "sleep 0.2; scrot ~/Pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
 
 # Screenshot (select window)
-bindsym $mod+Print exec --no-startup-id "sleep 0.2; scrot -s ~/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
+bindsym $mod+Print exec --no-startup-id "sleep 0.2; scrot -s ~/Pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
 
 # Workspaces
 ###############
